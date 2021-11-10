@@ -1,10 +1,10 @@
 class TeamsController < ApplicationController
     def index
-        render json: Team.all
+        render json: Team.all, include: :players
     end
 
     def show 
-        team = Team.find(params[:id])
+        team = Team.find_by(params[:id])
         if team
             render json: team, include: :players
         else

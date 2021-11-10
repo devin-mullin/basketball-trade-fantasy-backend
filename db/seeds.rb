@@ -49,9 +49,9 @@
   player.each {|player| player.update_attribute(:team_id, 1)}
   player = Player.where(tm: "BOS")
   player.each {|player| player.update_attribute(:team_id, 2)}
-  player = Player.where(tm: "BKN")
+  player = Player.where(tm: "BRK")
   player.each {|player| player.update_attribute(:team_id, 3)}
-  player = Player.where(tm: "CHA")
+  player = Player.where(tm: "CHO")
   player.each {|player| player.update_attribute(:team_id, 4)}
   player = Player.where(tm: "CHI")
   player.each {|player| player.update_attribute(:team_id, 5)}
@@ -69,7 +69,7 @@
   player.each {|player| player.update_attribute(:team_id, 11)}
   player = Player.where(tm: "IND")
   player.each {|player| player.update_attribute(:team_id, 12)}
-  vplayer = Player.where(tm: "LAC")
+  player = Player.where(tm: "LAC")
   player.each {|player| player.update_attribute(:team_id, 13)}
   player = Player.where(tm: "LAL")
   player.each {|player| player.update_attribute(:team_id, 14)}

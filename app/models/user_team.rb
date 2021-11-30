@@ -1,4 +1,4 @@
 class UserTeam < ApplicationRecord
     belongs_to :user
-    has_many :players
+    has_many :user_team_players
 end

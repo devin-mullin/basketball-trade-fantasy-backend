@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_202054) do
+ActiveRecord::Schema.define(version: 2021_11_30_152347) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 2021_11_23_202054) do
     t.string "abrv"
     t.string "simple_name"
     t.string "location"
+  end
+
+  create_table "user_team_players", force: :cascade do |t|
+    t.integer "user_team_id"
+    t.integer "player_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_teams", force: :cascade do |t|

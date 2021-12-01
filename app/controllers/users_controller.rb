@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   # GET /users
   def index
     @users = User.all
@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1
-  def show
-    render json: @user
+  def show  
+    user = User.find(session[:user_id])
+    render json: user
   end
 
   # POST /users
@@ -46,6 +47,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :password_digest)
+      params.require(:user).permit(:username, :password, :password_confirmation)
     end
 end

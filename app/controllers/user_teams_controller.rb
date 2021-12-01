@@ -1,11 +1,11 @@
 class UserTeamsController < ApplicationController
-  before_action :set_user_team, only: [:show, :update, :destroy]
+  before_action :set_user_pressing, only: [:show, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /user_teams
   def index
-    @user_teams = UserTeam.all
-
-    render json: @user_teams
+    @user_teams = UserTeam.where("user_id=?", session[:user_id])
+    render json: @user_teams, include: ['user_team_player']
   end
 
   # GET /user_teams/1
@@ -15,10 +15,8 @@ class UserTeamsController < ApplicationController
 
   # POST /user_teams
   def create
-    @user_team = UserTeam.new(user_team_params)
-
-    if @user_team.save
-      render json: @user_team, status: :created, location: @user_team
+    @user_team = UserTeam.create(user_team_params)
+      render json: @user_team, status: :created
     else
       render json: @user_team.errors, status: :unprocessable_entity
     end
@@ -36,6 +34,7 @@ class UserTeamsController < ApplicationController
   # DELETE /user_teams/1
   def destroy
     @user_team.destroy
+    render json: {}
   end
 
   private
@@ -46,6 +45,6 @@ class UserTeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_team_params
-      params.require(:user_team).permit(:user_id)
+      params.permit(:user_id)
     end
 end

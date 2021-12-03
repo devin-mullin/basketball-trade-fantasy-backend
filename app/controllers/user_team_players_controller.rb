@@ -1,6 +1,5 @@
 class UserTeamPlayersController < ApplicationController
-  before_action :set_user_team_player, only: [:show, :update, :destroy]
-
+# before action :set_user_team_player, only: [:destroy]
   # GET /user_team_players
   def index
     @user_team_players = UserTeamPlayer.all
@@ -10,18 +9,14 @@ class UserTeamPlayersController < ApplicationController
 
   # GET /user_team_players/1
   def show
-    render json: @user_team_player
+    user_team_players = UserTeamPlayer.find(params[:id])
+    render json: user_team_players, status: :ok
   end
 
   # POST /user_team_players
   def create
-    @user_team_player = UserTeamPlayer.new(user_team_player_params)
-
-    if @user_team_player.save
-      render json: @user_team_player, status: :created, location: @user_team_player
-    else
-      render json: @user_team_player.errors, status: :unprocessable_entity
-    end
+    @user_team_player = UserTeamPlayer.create(user_team_player_params)
+    render json: @user_team_player, status: :created
   end
 
   # PATCH/PUT /user_team_players/1
@@ -35,7 +30,9 @@ class UserTeamPlayersController < ApplicationController
 
   # DELETE /user_team_players/1
   def destroy
-    @user_team_player.destroy
+    user_team_player = UserTeamPlayer.find(params[:id])
+    user_team_player.destroy
+    render json: {}
   end
 
   private
@@ -46,6 +43,6 @@ class UserTeamPlayersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_team_player_params
-      params.require(:user_team_player).permit(:user_team_id, :player_id)
+      params.permit(:id, :user_team_id, :player_id)
     end
 end

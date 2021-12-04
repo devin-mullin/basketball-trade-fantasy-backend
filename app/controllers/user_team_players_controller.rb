@@ -15,8 +15,8 @@ class UserTeamPlayersController < ApplicationController
 
   # POST /user_team_players
   def create
-    @user_team_player = UserTeamPlayer.create(user_team_player_params)
-    render json: @user_team_player, status: :created
+    user_team_player = UserTeamPlayer.create(user_team_player_params)
+    render json: user_team_player, status: :created
   end
 
   # PATCH/PUT /user_team_players/1
@@ -30,7 +30,7 @@ class UserTeamPlayersController < ApplicationController
 
   # DELETE /user_team_players/1
   def destroy
-    user_team_player = UserTeamPlayer.find(params[:id])
+    user_team_player = UserTeamPlayer.find(player_id: params[:player_id])
     user_team_player.destroy
     render json: {}
   end
@@ -43,6 +43,6 @@ class UserTeamPlayersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_team_player_params
-      params.permit(:id, :user_team_id, :player_id)
+      params.permit(:user_team_id, :player_id)
     end
 end

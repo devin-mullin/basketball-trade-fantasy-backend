@@ -1,5 +1,5 @@
 class UserTeamsController < ApplicationController
-  before_action :set_user_team, only: [:index, :show, :update, :destroy]
+  # before_action :set_user_team, only: [:index, :show, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /user_teams

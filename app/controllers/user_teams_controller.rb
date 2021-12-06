@@ -4,14 +4,14 @@ class UserTeamsController < ApplicationController
 
   # GET /user_teams
   def index
-    @user_teams = UserTeam.all
-    render json: @user_teams
+    user_teams = UserTeam.all
+    render json: user_teams
   end
 
   # GET /user_teams/1
   def show
-    @user_teams = UserTeam.where("user_id=?", session[:user_id])
-    render json: @user_teams, include: ['user_team_player']
+    user_teams = UserTeam.where("user_id=?", session[:user_id])
+    render json: user_teams
   end
 
   # POST /user_teams

@@ -1,5 +1,6 @@
 class UserTeamPlayersController < ApplicationController
-# before action :set_user_team_player, only: [:destroy]
+
+
   # GET /user_team_players
   def index
     @user_team_players = UserTeamPlayer.all
@@ -30,7 +31,7 @@ class UserTeamPlayersController < ApplicationController
 
   # DELETE /user_team_players/1
   def destroy
-    user_team_player = UserTeamPlayer.find(player_id: params[:player_id])
+    user_team_player = UserTeamPlayer.find(params[:id])
     user_team_player.destroy
     render json: {}
   end

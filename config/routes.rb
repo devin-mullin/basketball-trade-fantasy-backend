@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   resources :teams
   resources :players 
 
-  get "/me", to: "users#show"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  delete "/user_player_del", to: "user_team_players#destroy"
+  post "/signup", to: "users#create"
+  get "/auth", to: "users#show"
+
 
   # react router / deployment
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

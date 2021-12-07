@@ -16,8 +16,8 @@ class UserTeamsController < ApplicationController
 
   # POST /user_teams
   def create
-    @user_team = @current_user.user_teams.create!(user_team_params)
-      render json: @user_team, status: :created
+    user_team = UserTeam.create!(user_team_params)
+      render json: user_team, status: :created
   end
 
   # PATCH/PUT /user_teams/1
@@ -43,6 +43,6 @@ class UserTeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_team_params
-      params.permit(:user_id)
+      params.permit(:user_id, :name)
     end
 end

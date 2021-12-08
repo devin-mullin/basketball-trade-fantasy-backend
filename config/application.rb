@@ -22,11 +22,15 @@ Bundler.require(*Rails.groups)
 module BasketballBackend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
-    config.api_only = true
+config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
+  end
+end
 
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore
+    config.load_defaults 6.1
+ 
 
     config.action_dispatch.cookies_same_site_protection = :strict
     # Configuration for the application, engines, and railties goes here.

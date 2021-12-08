@@ -1,6 +1,5 @@
 class UserTeamPlayersController < ApplicationController
 
-
   # GET /user_team_players
   def index
     @user_team_players = UserTeamPlayer.all
@@ -16,7 +15,7 @@ class UserTeamPlayersController < ApplicationController
 
   # POST /user_team_players
   def create
-    user_team_player = UserTeamPlayer.create(user_team_player_params)
+    UserTeamPlayer.create(user_team_player_params)
     render json: user_team_player, status: :created
   end
 

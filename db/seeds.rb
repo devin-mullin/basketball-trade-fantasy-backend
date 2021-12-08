@@ -108,11 +108,11 @@
 
 
   puts 'seeding user teams...'
-    User.create(username: "devin", password_digest: "123")
-    UserTeam.create(user_id: 1)
-    UserTeamPlayer.create(user_team_id: 1, player_id: 1)
-    UserTeamPlayer.create(user_team_id: 1, player_id: 2)
-    UserTeamPlayer.create(user_team_id: 1, player_id: 3)
-    UserTeamPlayer.create(user_team_id: 1, player_id: 4)
+    # User.create(username: "devin", password_digest: "123")
+    # UserTeam.create(user_id: 1)
+    # UserTeamPlayer.create(user_team_id: 1, player_id: 1)
+    # UserTeamPlayer.create(user_team_id: 1, player_id: 2)
+    # UserTeamPlayer.create(user_team_id: 1, player_id: 3)
+    # UserTeamPlayer.create(user_team_id: 1, player_id: 4)
   
     puts "basketball is my favorite sport :)"

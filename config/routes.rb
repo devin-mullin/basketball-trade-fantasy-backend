@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
+  resources :friends
   resources :user_team_players
   resources :user_teams
   resources :users
   resources :teams
   resources :players 
 
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+  post "/login", to: "auth#login"
+  delete "/logout", to: "auth#destroy"
+  get "/auto_login", to: "auth#auto_login"
+  get "/user_is_authed", to: "auth#user_is_authed"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
+  get "/myteams", to: "user_teams#show"
   
 
 

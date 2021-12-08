@@ -1,5 +1,4 @@
 class UserTeamsController < ApplicationController
-  # before_action :set_user_team, only: [:index, :show, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   # GET /user_teams
@@ -10,7 +9,7 @@ class UserTeamsController < ApplicationController
 
   # GET /user_teams/1
   def show
-    user_teams = UserTeam.where("user_id=?", session[:user_id])
+    user_teams = UserTeam.find_by(user_id: params[:user_id])
     render json: user_teams
   end
 

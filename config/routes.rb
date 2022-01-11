@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :players 
 
   post "/login", to: "auth#login"
-  delete "/logout", to: "auth#destroy"
   get "/auto_login", to: "auth#auto_login"
   get "/user_is_authed", to: "auth#user_is_authed"
   post "/signup", to: "users#create"

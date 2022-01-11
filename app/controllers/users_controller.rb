@@ -17,8 +17,8 @@ class UsersController < ApplicationController
     user = User.create!(user_params)
     if user.valid?
       payload = {user_id: user.id}
-      token = issue_token(payload)
-      render json: {user: user, jwt: token}
+      token = encode_token(payload)
+      render json: {username: user.username, jwt: token}
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end

@@ -9,7 +9,7 @@ class UserTeamsController < ApplicationController
 
   # GET /user_teams/1
   def show
-    user_teams = UserTeam.find_by(user_id: params[:user_id])
+    user_teams = UserTeam.find_by(id: params[:id])
     render json: user_teams
   end
 
@@ -42,6 +42,6 @@ class UserTeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_team_params
-      params.permit(:user_id, :name)
+      params.permit(:user_id, :name, :user_team)
     end
 end

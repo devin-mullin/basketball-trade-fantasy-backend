@@ -13,6 +13,11 @@ class UserTeamsController < ApplicationController
     render json: user_teams
   end
 
+  def my_teams
+    user_teams = UserTeam.where(user_id: params[:user_id])
+    render json: user_teams
+  end
+
   # POST /user_teams
   def create
     user_team = UserTeam.create!(user_team_params)

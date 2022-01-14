@@ -15,7 +15,7 @@ class UserTeamPlayersController < ApplicationController
 
   # POST /user_team_players
   def create
-    UserTeamPlayer.create(user_team_player_params)
+    user_team_player = UserTeamPlayer.create(user_team_player_params)
     render json: user_team_player, status: :created
   end
 

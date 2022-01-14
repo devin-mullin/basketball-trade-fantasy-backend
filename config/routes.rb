@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   get "/user_is_authed", to: "auth#user_is_authed"
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
-  get "/myteams", to: "user_teams#show"
+  get "/myteams", to: "user_teams#my_teams"
+
   
 
 

@@ -41,7 +41,7 @@ class UserTeamsController < ApplicationController
 
   def user_team_player_count
     if self.user_team_players(:reload).size >= 14
-      render json: (error: "Waive a player to create roster space!")
+      render json: {error: "Waive a player to create roster space!"}
     end
   end
 
